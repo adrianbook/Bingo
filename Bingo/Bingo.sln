@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tombola", "Tombola\Tombola.csproj", "{65FB26E7-ED27-47C5-AC8B-D289B11804C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accessories", "Tombola\Accessories.csproj", "{65FB26E7-ED27-47C5-AC8B-D289B11804C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TombolaTest", "TombolaTest\TombolaTest.csproj", "{D25946F0-5184-4FAA-945C-D73CDF60B5DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessoriesTest", "TombolaTest\AccessoriesTest.csproj", "{D25946F0-5184-4FAA-945C-D73CDF60B5DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

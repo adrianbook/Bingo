@@ -1,28 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TombolaProject;
-using TombolaProject.Extensions;
+using Accessories;
+using Accessories.Extensions;
 
-namespace TombolaProject
+namespace Accessories
 {
     public class Tombola
     {
-        private Stack<int> Numbers;
+        private Stack<int> NumbersInTombola;
+        private HashSet<int> DrawnNumbers;
         
         public Tombola()
         {
             var shuffledNumbers = Enumerable.Range(1, 75).ToList().ShuffleAndReturn();
-            Numbers = new Stack<int>(shuffledNumbers);
+            NumbersInTombola = new Stack<int>(shuffledNumbers);
+            DrawnNumbers = new HashSet<int>();
         }
         public int NextNumber()
         {
-            return Numbers.Pop();
+            if (NumbersInTombola.Count == 0)
+            {
+                return 0;
+            } else
+            {
+                int drawnNumber =  NumbersInTombola.Pop();
+                if (!DrawnNumbers.Add(drawnNumber))
+                {
+                    throw new Exception("Tombola contains duplicates");
+                }
+                return drawnNumber;
+            }
         }
 
-        
+        public ImmutableList<int> GetDrawnNumbers()
+        {
+            return DrawnNumbers.ToList().OrderBy(x => x).ToImmutableList();
+        }
     }
 
 }
