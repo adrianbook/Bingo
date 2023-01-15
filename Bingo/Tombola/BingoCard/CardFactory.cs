@@ -17,14 +17,13 @@ namespace Accessories.BingoCard
 
             for(int i = 0; i < 5; i++)
             {
-                numbers[i] = new HashSet<int>();
+                numbers.Add(new HashSet<int>());
                 while (numbers[i].Count < 5) {
                     numbers[i].Add(rand.Next(15)+1+i*15);
                 }
             }
-            return new Card()
+            return new Card(numbers[0].ToList())
             {
-                B = numbers[0].ToImmutableList(),
                 I = numbers[1].ToImmutableList(),
                 N = numbers[2].ToImmutableList(),
                 G = numbers[3].ToImmutableList(),
