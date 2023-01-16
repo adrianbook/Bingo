@@ -13,22 +13,15 @@ namespace Accessories.BingoCard
 
         public Card MakeCard()
         {
-            var numbers = new List<HashSet<int>>();
+            var numbers = new HashSet<int>();
 
             for(int i = 0; i < 5; i++)
             {
-                numbers.Add(new HashSet<int>());
-                while (numbers[i].Count < 5) {
-                    numbers[i].Add(rand.Next(15)+1+i*15);
+                while (numbers.Count < (i+1)*5) {
+                    numbers.Add(rand.Next(15)+1+i*15);
                 }
             }
-            return new Card(numbers[0].ToList())
-            {
-                I = numbers[1].ToImmutableList(),
-                N = numbers[2].ToImmutableList(),
-                G = numbers[3].ToImmutableList(),
-                O = numbers[4].ToImmutableList(),
-            };
+            return new Card(numbers.ToList());
         }
 
         public IEnumerable<Card> MakeCards(int count)

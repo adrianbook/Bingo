@@ -9,16 +9,17 @@ namespace Accessories.BingoCard
 {
     public record class Card
     {
-        private List<int> numbers;
-        public ImmutableList<int> B { get => numbers.ToImmutableList(); }
-        public ImmutableList<int> I { get; init; }
-        public ImmutableList<int> N { get; init; }
-        public ImmutableList<int> G { get; init; }
-        public ImmutableList<int> O { get; init; }
+        public string Id { get; init; }
+        public ImmutableList<ImmutableList<int>> Rows { get; init; }
 
-        internal Card(List<int> n)
+        internal Card(List<int> numbers)
         {
-            numbers = n;
+            Id = numbers.Select(n => n < 10 ? "0"+n.ToString(): n.ToString()).Aggregate((prev, cur)=> prev + cur);
+            var topList = new List<ImmutableList<int>>();
+            for (int i = 0; i < 5; i++) {
+                topList.Add(new int[] { numbers[i], numbers[i + 5], numbers[i+10], numbers[i+15], numbers[i+20]}.ToImmutableList());
+            }
+            Rows = topList.ToImmutableList();
         }
     }
 }
