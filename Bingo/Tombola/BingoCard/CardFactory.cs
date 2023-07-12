@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Accessories.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
@@ -13,15 +14,20 @@ namespace Accessories.BingoCard
 
         public Card MakeCard()
         {
-            var numbers = new HashSet<int>();
-
-            for(int i = 0; i < 5; i++)
+            var numbers = new List<int>();
+            // make 5 rows consting of 5 random numbers from sequential sets of 15 numbers
+            while(numbers.Count < 25)
             {
-                while (numbers.Count < (i+1)*5) {
-                    numbers.Add(rand.Next(15)+1+i*15);
+                int row = numbers.Count / 5;
+                int rowSpanStart = (row * 15) + 1;
+                int rowSpanEnd = (row * 15) + 16;
+                int randomNumber = rand.Next(rowSpanStart, rowSpanEnd);
+                if (!numbers.Contains(randomNumber))
+                {
+                    numbers.Add(randomNumber);
                 }
             }
-            return new Card(numbers.ToList());
+            return new Card(numbers);
         }
 
         public IEnumerable<Card> MakeCards(int count)

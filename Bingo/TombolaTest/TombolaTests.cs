@@ -4,7 +4,7 @@ using Accessories;
 namespace TombolaTest
 {
     [TestClass]
-    public class UnitTest1
+    public class TombolaTests
     {
         [TestMethod]
         public void TestNumberProduced()
