@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Accessories.Extensions
+﻿namespace Accessories.Extensions
 {
     public static class ShuffleExtension
     {
@@ -16,7 +10,7 @@ namespace Accessories.Extensions
             {
                 n--;
                 int k = rng.Next(n + 1);
-                T value = list[k];
+                var value = list[k];
                 list[k] = list[n];
                 list[n] = value;
             }

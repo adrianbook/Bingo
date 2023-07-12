@@ -1,14 +1,6 @@
-﻿using Accessories.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Accessories.BingoCard
+﻿namespace Accessories.BingoCard
 {
-    public class CardFactory
+    public class CardFactory : ICardFactory
     {
         private Random rand = new Random();
 
@@ -16,7 +8,7 @@ namespace Accessories.BingoCard
         {
             var numbers = new List<int>();
             // make 5 rows consting of 5 random numbers from sequential sets of 15 numbers
-            while(numbers.Count < 25)
+            while (numbers.Count < 25)
             {
                 int row = numbers.Count / 5;
                 int rowSpanStart = (row * 15) + 1;

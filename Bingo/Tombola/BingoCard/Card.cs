@@ -11,6 +11,7 @@ public class Card
     public string Id { get; init; }
     public List<ImmutableArray<int>> Rows => GetRows().ToList();
     public List<ImmutableArray<int>> Columns => GetColumns().ToList();
+    public ImmutableArray<int> Numbers { get; init; }
 
     internal Card(IEnumerable<int> numbers)
     {
@@ -18,8 +19,8 @@ public class Card
         {
             throw new ArgumentException($"numbers must contain {rowLength * columnLength} elements");
         }
-        Id = numbers.Select(n => n < 10 ? "0"+n.ToString(): n.ToString()).Aggregate((prev, cur)=> prev + cur);
-        
+        Id = numbers.Select(n => n < 10 ? "0"+n.ToString() : n.ToString()).Aggregate((prev, cur) => prev + cur);
+
         Numbers = numbers.ToImmutableArray();
     }
     public override int GetHashCode() => Id.GetHashCode();
@@ -34,7 +35,7 @@ public class Card
         {
             return false;
         }
-        return IsBingo(drawnNumbers,requiredNumberOfRows, GetRows());
+        return IsBingo(drawnNumbers, requiredNumberOfRows, GetRows());
     }
 
     private static bool IsBingo(HashSet<int> drawnNumbers, int requiredMatches, ImmutableArray<int>[] bingoConditions)
@@ -76,7 +77,7 @@ public class Card
 
     internal ImmutableArray<int> GetRow(int rowIndex)
     {
-        if (rowIndex < 0 || rowIndex > 4)
+        if (rowIndex is<0 or >4)
         {
             throw new ArgumentException("rowIndex must be between 0 and 4");
         }
@@ -91,7 +92,7 @@ public class Card
 
     internal ImmutableArray<int> GetColumn(int columnIndex)
     {
-        if (columnIndex < 0 || columnIndex > 4)
+        if (columnIndex is<0 or >4)
         {
             throw new ArgumentException("columnIndex must be between 0 and 4");
         }

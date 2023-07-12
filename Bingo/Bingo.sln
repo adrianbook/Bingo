@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accessories", "Tombola\Acce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessoriesTest", "TombolaTest\AccessoriesTest.csproj", "{D25946F0-5184-4FAA-945C-D73CDF60B5DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoHall", "BingoHall\BingoHall.csproj", "{DA3F61D2-9A08-44AD-8777-AEC938FE9AE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D25946F0-5184-4FAA-945C-D73CDF60B5DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D25946F0-5184-4FAA-945C-D73CDF60B5DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D25946F0-5184-4FAA-945C-D73CDF60B5DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA3F61D2-9A08-44AD-8777-AEC938FE9AE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA3F61D2-9A08-44AD-8777-AEC938FE9AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA3F61D2-9A08-44AD-8777-AEC938FE9AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA3F61D2-9A08-44AD-8777-AEC938FE9AE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
