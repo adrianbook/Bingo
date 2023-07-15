@@ -18,6 +18,10 @@ internal class BingoCardService : IBingoCardService
         var rawCard = _cardFactory.MakeCard();
         var byteArrayNumbers = rawCard.Numbers.Select(n => (byte) n).ToArray();
         var encryptedId = Encrypter.EncryptByteArray(byteArrayNumbers, "password", new byte[] {2,3,1,14});
+        if (encryptedId == null)
+        {
+            throw new ArgumentNullException(nameof(encryptedId));
+        }
         return new()
         {
             Id = encryptedId,
