@@ -1,6 +1,8 @@
 using Accessories.BingoCardCreation;
 using Accessories.TombolaCreation;
+using BenchmarkDotNet.Toolchains.Results;
 using BingoHall;
+using BingoHall.Tombolas.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +13,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<ICardDataFactory, CardDataFactory>();
-
 builder.Services.AddTransient<IBingoCardService, BingoCardService>();
+builder.Services.AddSingleton<ITombolaService, TombolaService>();
 
 var app = builder.Build();
 

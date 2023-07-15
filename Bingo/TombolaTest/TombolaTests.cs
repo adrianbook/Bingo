@@ -1,5 +1,5 @@
 using System.Security.Cryptography.X509Certificates;
-using Accessories;
+using Accessories.TombolaCreation;
 
 namespace TombolaTest
 {
