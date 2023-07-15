@@ -1,16 +1,16 @@
 ﻿using Accessories.Extensions;
 using System.Collections.Immutable;
 
-namespace Accessories
+namespace Accessories.TombolaCreation
 {
     public class Tombola : ITombola
     {
         private Stack<int> NumbersInTombola;
         private HashSet<int> DrawnNumbers;
 
-        public Tombola()
+        public Tombola(int totalCount)
         {
-            var shuffledNumbers = Enumerable.Range(1, 75).ToList().ShuffleAndReturn();
+            var shuffledNumbers = Enumerable.Range(1, totalCount).ToList().ShuffleAndReturn();
             NumbersInTombola = new Stack<int>(shuffledNumbers);
             DrawnNumbers = new HashSet<int>();
         }

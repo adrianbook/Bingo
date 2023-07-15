@@ -9,7 +9,7 @@ namespace TombolaTest
         [TestMethod]
         public void TestNumberProduced()
         {
-            Tombola t = new Tombola();
+            Tombola t = new Tombola(75);
             int num = t.NextNumber();
 
             Assert.IsTrue(num < 76);
@@ -19,7 +19,7 @@ namespace TombolaTest
         [TestMethod]
         public void TestNumbersNotInSequence()
         {
-            Tombola t = new Tombola();
+            Tombola t = new Tombola(75);
             for (int i = 75; i > 60; i--)
             {
                 int n = t.NextNumber();
@@ -32,7 +32,7 @@ namespace TombolaTest
         [TestMethod]
         public void TestReturns0WhenExactlyEmpty()
         {
-            Tombola t = new();
+            Tombola t = new(75);
             for (int i = 0; i < 74; i++)
             {
                 t.NextNumber();
@@ -45,7 +45,7 @@ namespace TombolaTest
         [TestMethod]
         public void TestNumbersAreUnique()
         {
-            Tombola t = new();
+            Tombola t = new(75);
             var testNumbers = new HashSet<int>();
             for (int i = 0; i < 76; i++)
             {
@@ -56,7 +56,7 @@ namespace TombolaTest
         [TestMethod]
         public void TestDrawnNumbersReturnedInSequence()
         {
-            Tombola t = new();
+            Tombola t = new(75);
             int previous = 0;
             bool currentSmallerThanPrevious = false;
             for (int i = 0; i < 67; i++)

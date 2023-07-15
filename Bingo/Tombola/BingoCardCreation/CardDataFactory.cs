@@ -1,4 +1,4 @@
-﻿namespace Accessories.BingoCard
+﻿namespace Accessories.BingoCardCreation
 {
     public class CardDataFactory : ICardDataFactory
     {

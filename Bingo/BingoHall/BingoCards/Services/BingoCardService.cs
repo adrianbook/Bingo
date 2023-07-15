@@ -1,4 +1,4 @@
-﻿using Accessories.BingoCard;
+﻿using Accessories.BingoCardCreation;
 using BingoHall.BingoCards.Dtos.Responses;
 using BingoHall.Encryption;
 

@@ -2,13 +2,13 @@
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("AccessoriesTest")]
-namespace Accessories.BingoCard;
+namespace Accessories.BingoCardCreation;
 
 public class CardData
 {
     public static readonly int rowLength = 5;
     public static readonly int columnLength = 5;
-    public string Id { get; init; }
+    public string Id => Numbers.Select(n => n < 10 ? "0"+n.ToString() : n.ToString()).Aggregate((prev, cur) => prev + cur);
     public List<ImmutableArray<int>> Rows => GetRows().ToList();
     public List<ImmutableArray<int>> Columns => GetColumns().ToList();
     public ImmutableArray<int> Numbers { get; init; }
@@ -19,11 +19,9 @@ public class CardData
         {
             throw new ArgumentException($"numbers must contain {rowLength * columnLength} elements");
         }
-        Id = numbers.Select(n => n < 10 ? "0"+n.ToString() : n.ToString()).Aggregate((prev, cur) => prev + cur);
-
         Numbers = numbers.ToImmutableArray();
     }
-    public override int GetHashCode() => Id.GetHashCode();
+    public override int GetHashCode() => Id.GetHashCode(StringComparison.Ordinal);
     public override bool Equals(object? obj) => obj is CardData c && c.Id == Id;
     public bool HasBingo(HashSet<int> drawnNumbers, int requiredNumberOfRows)
     {
