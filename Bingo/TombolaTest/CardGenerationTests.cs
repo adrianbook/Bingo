@@ -23,7 +23,7 @@ namespace AccessoriesTest
         [TestMethod]
         public void TestCardSize()
         {
-            var fact = new CardFactory();
+            var fact = new CardDataFactory();
             Assert.AreEqual(25, fact.MakeCard().Numbers.Count());
         }
 
@@ -31,9 +31,9 @@ namespace AccessoriesTest
         public void TestRowNumbersInRange()
         {
             var fails = new List<string>();
-            var factory = new CardFactory();
+            var factory = new CardDataFactory();
             var cards = factory.MakeCards(1000);
-            foreach (Card card in cards)
+            foreach (CardData card in cards)
             {
                 for (int i = 0; i < 5; i++)
                 {
@@ -56,10 +56,10 @@ namespace AccessoriesTest
         public void TestRowNumbersNotInSequence()
         {
             var entriesNotInSequence = 0;
-            var factory = new CardFactory();
+            var factory = new CardDataFactory();
             var cards = factory.MakeCards(10);
 
-            foreach (Card card in cards)
+            foreach (CardData card in cards)
             {
                 for (int i = 0; i < 25; i++)
                 {
@@ -75,9 +75,9 @@ namespace AccessoriesTest
 
         [TestMethod]
         public void TestIdsConsistent() {
-            var factory = new CardFactory();
+            var factory = new CardDataFactory();
             var cards = factory.MakeCards(1000);
-            foreach (Card card in cards)
+            foreach (CardData card in cards)
             {
                 Assert.AreEqual(50, card.Id.Length);
             }
@@ -86,7 +86,7 @@ namespace AccessoriesTest
         [TestMethod]
         public void TestRowsFetchedCorrectly()
         {
-            var card = new Card(new List<int> { 1, 2, 3, 4, 5,
+            var card = new CardData(new List<int> { 1, 2, 3, 4, 5,
                                                 1, 2, 3, 4, 5,
                                                 1, 2, 3, 4, 5,
                                                 1, 2, 3, 4, 5,
@@ -106,7 +106,7 @@ namespace AccessoriesTest
         [TestMethod]
         public void TestColumnsFetchedCorrectly()
         {
-            var card = new Card(new List<int> { 1, 1, 1, 1, 1,
+            var card = new CardData(new List<int> { 1, 1, 1, 1, 1,
                                                 2, 2, 2, 2, 2,
                                                 3, 3, 3, 3, 3,
                                                 4, 4, 4, 4, 4,

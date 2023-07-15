@@ -1,5 +1,6 @@
 using Accessories;
 using Accessories.BingoCard;
+using BingoHall;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +10,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddTransient<ICardFactory, CardFactory>();
+builder.Services.AddTransient<ICardDataFactory, CardDataFactory>();
 builder.Services.AddTransient<ITombola, Tombola>();
-
+builder.Services.AddTransient<IBingoCardService, BingoCardService>();
 
 var app = builder.Build();
 

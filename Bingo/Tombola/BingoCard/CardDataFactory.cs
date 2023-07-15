@@ -1,10 +1,10 @@
 ﻿namespace Accessories.BingoCard
 {
-    public class CardFactory : ICardFactory
+    public class CardDataFactory : ICardDataFactory
     {
         private Random rand = new Random();
 
-        public Card MakeCard()
+        public CardData MakeCard()
         {
             var numbers = new List<int>();
             // make 5 rows consting of 5 random numbers from sequential sets of 15 numbers
@@ -19,12 +19,12 @@
                     numbers.Add(randomNumber);
                 }
             }
-            return new Card(numbers);
+            return new CardData(numbers);
         }
 
-        public IEnumerable<Card> MakeCards(int count)
+        public IEnumerable<CardData> MakeCards(int count)
         {
-            var result = new List<Card>();
+            var result = new List<CardData>();
             for (int i = 0; i < count; i++)
             {
                 result.Add(MakeCard());

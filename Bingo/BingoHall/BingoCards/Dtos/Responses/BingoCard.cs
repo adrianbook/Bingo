@@ -1,6 +1,6 @@
 ﻿using System.Collections.Immutable;
 
-namespace BingoHall.Dtos.Responses;
+namespace BingoHall.BingoCards.Dtos.Responses;
 
 public record BingoCard
 {

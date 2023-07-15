@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("AccessoriesTest")]
 namespace Accessories.BingoCard;
 
-public class Card
+public class CardData
 {
     public static readonly int rowLength = 5;
     public static readonly int columnLength = 5;
@@ -13,7 +13,7 @@ public class Card
     public List<ImmutableArray<int>> Columns => GetColumns().ToList();
     public ImmutableArray<int> Numbers { get; init; }
 
-    internal Card(IEnumerable<int> numbers)
+    internal CardData(IEnumerable<int> numbers)
     {
         if (numbers.Count() != rowLength * columnLength)
         {
@@ -24,7 +24,7 @@ public class Card
         Numbers = numbers.ToImmutableArray();
     }
     public override int GetHashCode() => Id.GetHashCode();
-    public override bool Equals(object? obj) => obj is Card c && c.Id == Id;
+    public override bool Equals(object? obj) => obj is CardData c && c.Id == Id;
     public bool HasBingo(HashSet<int> drawnNumbers, int requiredNumberOfRows)
     {
         if (requiredNumberOfRows < 1 || requiredNumberOfRows > columnLength)
