@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 
 namespace BingoHall.Tombolas;
+[ApiController]
+[Route("api/[controller]")]
 public class TombolasController : Controller
 {
     private readonly ITombolaService _tombolaService;
