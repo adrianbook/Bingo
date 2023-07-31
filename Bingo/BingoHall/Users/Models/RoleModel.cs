@@ -1,7 +1,7 @@
 ﻿namespace BingoHall.Users.Models;
 
-public record Role
+public record RoleModel
 {
     public Guid Id { get; init; }
-    public string Name { get; init; } = null!;
+    public string Label { get; init; } = null!;
 }
