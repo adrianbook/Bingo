@@ -6,8 +6,11 @@ using Dapper;
 using Microsoft.AspNetCore.Mvc;
 using BingoHall.Users.Mappings;
 using BingoHall.Users.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BingoHall.Users;
+
+[Authorize(Roles = "Admin,SuperAdmin")]
 [ApiController]
 [Route("api/[controller]")]
 public class UsersController : Controller
@@ -29,14 +32,16 @@ public class UsersController : Controller
         return Ok(addedUser);
     }
 
-    [HttpGet("/{email}")]
+    
+    [HttpGet("{email}")]
     public async Task<IActionResult> Login([FromRoute] string email)
     {
         var result = await _userService.GetUserByEmail(email);
         return result.ResolveAsIActionResult();
     }
 
-    [HttpGet("/aquiretoken")]
+    [AllowAnonymous]
+    [HttpGet("aquiretoken")]
     public async Task<IActionResult> AquireToken([FromQuery] string email, [FromQuery] string password)
     {
         var result = await _userService.GetToken(email, password);

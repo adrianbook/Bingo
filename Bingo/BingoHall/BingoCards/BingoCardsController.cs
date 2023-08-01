@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BingoHall.BingoCards;
 [ApiController]
 [Route("api/[controller]")]
-public class BingoCardsController : ControllerBase
+public class BingoCardsController : Controller
 {
     private readonly IBingoCardService _cardService;
 

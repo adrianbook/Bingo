@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.143" />
     <PackageReference Include="Hashids.net" Version="1.7.0" />
+    <PackageReference Include="MailKit" Version="4.1.0" />
     <PackageReference Include="MediatR" Version="12.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.20" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.1" />
@@ -21,9 +22,5 @@
     <ProjectReference Include="..\Tombola\Accessories.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="BingoCards\Querys\" />
-    <Folder Include="Users\Dtos\Responses\" />
-  </ItemGroup>
 
 </Project>

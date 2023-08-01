@@ -22,10 +22,16 @@ public class UserDao : IUserDao
 
     public async Task<Result> CreateUser(BingoUserModel user)
     {
+        var sql = @"
+                    INSERT INTO [dbo].[BingoUser]
+                        (FirstName, LastName, Email, PasswordHash) 
+                    VALUES
+                        (@FirstName, @LastName, @Email, @PasswordHash)
+                    ";
         try
         {
             using var connection = _context.CreateConnection();
-            await connection.ExecuteAsync("INSERT INTO [dbo].[BingoUser] (FirstName, LastName, Email, PasswordHash) VALUES (@FirstName, @LastName, @Email, @PasswordHash)", user);
+            await connection.ExecuteAsync(sql, user);
 
             return Result.Success;
         }
@@ -66,11 +72,35 @@ public class UserDao : IUserDao
                 LastName = first.LastName,
                 Email = first.Email,
                 PasswordHash = first.PasswordHash,
-                Roles = queryResult.Count() > 1 ? queryResult.Select(r => new RoleModel() { Id = r.RoleId, Label = r.Label }).ToList() : null
+                Roles = first.RoleId is not null ? queryResult.Select(r => new RoleModel() { Id = r.RoleId, Label = r.Label }).ToList() : null
             };
             
            
             return user;
+        }
+        catch (Exception ex)
+        {
+            return ex;
+        }
+    }
+
+    public async Task<Result> UpdateUser(BingoUserModel user)
+    {
+        var sql = @"
+                    UPDATE [dbo].[BingoUser]
+                    SET
+                        FirstName = @FirstName,
+                        LastName = @LastName,
+                        Email = @Email,
+                        PasswordHash = @PasswordHash
+                    WHERE Id = @Id
+                    ";
+        try
+        {
+            using var connection = _context.CreateConnection();
+            await connection.ExecuteAsync(sql, user);
+
+            return Result.Success;
         }
         catch (Exception ex)
         {
