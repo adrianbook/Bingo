@@ -1,8 +1,8 @@
-﻿using BingoHall.Authorization.JwtTokens;
-using BingoHall.DataTransfer;
-using BingoHall.Exceptions;
-using BingoHall.Users.DataAccess;
+﻿using BingoHall.Users.DataAccess;
 using BingoHall.Users.Models;
+using DataTransfer.Exceptions;
+using DataTransferUtility;
+using DataTransferUtility.JwtTokens;
 using PasswordsAndEncryption.Passwords;
 
 namespace BingoHall.Users.Services;

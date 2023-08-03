@@ -1,10 +1,10 @@
-﻿namespace BingoHall.Authorization.JwtTokens.Config;
+﻿namespace DataTransferUtility.JwtTokens.Config;
 
 public class JwtTokenGeneratorConfigurationBase : IJwtTokenGeneratorConfiguration
 {
     public JwtTokenGeneratorConfigurationBase(string key, string issuer, string audience)
     {
-        Key= key;
+        Key = key;
         Issuer = issuer;
         Audience = audience;
     }

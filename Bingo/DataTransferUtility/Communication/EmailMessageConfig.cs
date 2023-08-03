@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("BingoHallTests")]
-namespace BingoHall.Communication;
+[assembly: InternalsVisibleTo("DataTransferUtilityTest")]
+namespace DataTransfer.Communication;
 
 internal record EmailMessageConfig
 {

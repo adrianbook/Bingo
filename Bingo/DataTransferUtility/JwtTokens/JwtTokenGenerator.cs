@@ -1,11 +1,11 @@
-﻿using BingoHall.Authorization.JwtTokens.Config;
+﻿using DataTransferUtility.JwtTokens.Config;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace BingoHall.Authorization.JwtTokens;
+namespace DataTransferUtility.JwtTokens;
 
 public class JwtTokenGenerator : IJwtTokenGenerator
 {
@@ -19,15 +19,14 @@ public class JwtTokenGenerator : IJwtTokenGenerator
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.Key));
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-        var claims = Enumerable.Concat(
-            new[]
+        var claims = (new[]
             {
                 new Claim(ClaimTypes.Email, info.Email)
-            },
+            }).Concat(
             info.Roles?.Select(role => new Claim(ClaimTypes.Role, role)) ?? Enumerable.Empty<Claim>()
             )
             .ToArray();
-        
+
         var token = new JwtSecurityToken(_configuration.Issuer,
             _configuration.Audience,
             claims,

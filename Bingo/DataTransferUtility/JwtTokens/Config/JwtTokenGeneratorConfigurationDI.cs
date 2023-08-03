@@ -1,4 +1,6 @@
-﻿namespace BingoHall.Authorization.JwtTokens.Config;
+﻿using Microsoft.Extensions.Configuration;
+
+namespace DataTransferUtility.JwtTokens.Config;
 
 public class JwtTokenGeneratorConfigurationDI : JwtTokenGeneratorConfigurationBase
 {

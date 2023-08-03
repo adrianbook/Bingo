@@ -1,7 +1,5 @@
-﻿using BingoHall.DataTransfer;
-using BingoHall.Users.Dtos.Requests;
-using BingoHall.Users.Models;
-using System.Runtime.CompilerServices;
+﻿using BingoHall.Users.Models;
+using DataTransferUtility;
 
 namespace BingoHall.Users.DataAccess;
 

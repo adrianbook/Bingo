@@ -1,10 +1,5 @@
-﻿using BingoHall.Authorization.JwtTokens;
-using BingoHall.Authorization.JwtTokens.Config;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DataTransferUtility.JwtTokens;
+using DataTransferUtility.JwtTokens.Config;
 
 namespace BingoHallTests;
 [TestClass]

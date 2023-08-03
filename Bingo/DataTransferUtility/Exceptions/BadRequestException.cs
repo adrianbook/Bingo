@@ -1,9 +1,9 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("BingoHallTests")]
-namespace BingoHall.Exceptions;
+[assembly: InternalsVisibleTo("DataTransferUtilityTest")]
+namespace DataTransfer.Exceptions;
 
-internal class BadRequestException : Exception
+public class BadRequestException : Exception
 {
     public BadRequestException(string message = "Bad request") : base(message)
     {

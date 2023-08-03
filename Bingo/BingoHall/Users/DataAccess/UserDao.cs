@@ -1,10 +1,8 @@
 ﻿using BingoHall.Dapper;
-using BingoHall.DataTransfer;
-using BingoHall.Exceptions;
-using BingoHall.Users.Dtos.Requests;
-using BingoHall.Users.Mappings;
 using BingoHall.Users.Models;
 using Dapper;
+using DataTransfer.Exceptions;
+using DataTransferUtility;
 using PasswordsAndEncryption.Passwords;
 
 namespace BingoHall.Users.DataAccess;

@@ -1,5 +1,5 @@
-﻿using BingoHall.DataTransfer;
-using BingoHall.Users.Models;
+﻿using BingoHall.Users.Models;
+using DataTransferUtility;
 
 namespace BingoHall.Users.Services;
 

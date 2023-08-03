@@ -15,7 +15,7 @@ public class PasswordHasher : IPasswordHasher
 
     public string GenerateHash(string password)
     {
-        var salt = new byte[_saltSize];
+        byte[] salt = new byte[_saltSize];
         _random.NextBytes(salt);
         var pbkdf2 = new Rfc2898DeriveBytes(password, salt, _iterations);
         byte[] hash = pbkdf2.GetBytes(_passwordHashSize);
@@ -29,21 +29,21 @@ public class PasswordHasher : IPasswordHasher
 
     public bool PasswordMatchesHash(string password, string hash)
     {
-        var hashBytes = Convert.FromBase64String(hash);
+        byte[] hashBytes = Convert.FromBase64String(hash);
 
         if (hashBytes.Length != (_passwordHashSize + _saltSize))
         {
             throw new ArgumentException("Invalid hash-lenght for this hasher");
         }
 
-        var salt = new byte[_saltSize];
+        byte[] salt = new byte[_saltSize];
         Array.Copy(hashBytes, 0, salt, 0, _saltSize);
 
-        var storedHash = new byte[_passwordHashSize];
+        byte[] storedHash = new byte[_passwordHashSize];
         Array.Copy(hashBytes, _saltSize, storedHash, 0, _passwordHashSize);
 
         var pbkdf2 = new Rfc2898DeriveBytes(password, salt, _iterations);
-        var incomingHash = pbkdf2.GetBytes(_passwordHashSize);
+        byte[] incomingHash = pbkdf2.GetBytes(_passwordHashSize);
 
         for (int i = 0; i < _passwordHashSize; i++)
         {

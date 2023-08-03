@@ -1,4 +1,4 @@
-﻿namespace BingoHall.Authorization.JwtTokens;
+﻿namespace DataTransferUtility.JwtTokens;
 
 public interface IJwtTokenGenerator
 {

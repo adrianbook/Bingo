@@ -23,6 +23,12 @@ public class UsersController : Controller
         _mapper = bingoUserMapper;
     }
 
+    [HttpGet]
+    public IActionResult UpdatePassword()
+    {
+        return View();
+    }
+
     [HttpPost("create")]
     public async Task<IActionResult> AddUser([FromBody] BingoUserNew newUser)
     {

@@ -1,8 +1,8 @@
-﻿using BingoHall.Exceptions;
+﻿using DataTransfer.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing.Template;
 
-namespace BingoHall.DataTransfer;
+namespace DataTransferUtility;
 
 public record Result
 {

@@ -1,11 +1,10 @@
 ﻿using MailKit.Net.Smtp;
-using MailKit;
 using MimeKit;
-using Microsoft.IdentityModel.Tokens;
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("BingoHallTests")]
-namespace BingoHall.Communication;
+
+[assembly: InternalsVisibleTo("DataTransferUtilityTest")]
+namespace DataTransfer.Communication;
 
 internal class EmailMessage
 {
@@ -84,7 +83,7 @@ internal class EmailMessage
     private void PackageAndValidateMessage()
     {
         SetBody();
-        if (_message.To.IsNullOrEmpty()) { throw new InvalidOperationException("Email must have a recipient"); }
+        if (_message.To.Count == 0) { throw new InvalidOperationException("Email must have a recipient"); }
         if (string.IsNullOrEmpty(_message.Subject)) { throw new InvalidOperationException("Email must have a subject"); }
         if (string.IsNullOrWhiteSpace(_message.HtmlBody) || string.IsNullOrWhiteSpace(_message.TextBody)) { throw new InvalidOperationException("Email must have a body"); }
     }

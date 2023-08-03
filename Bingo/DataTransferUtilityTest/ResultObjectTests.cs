@@ -1,5 +1,5 @@
-using BingoHall.DataTransfer;
-using BingoHall.Exceptions;
+using DataTransfer.Exceptions;
+using DataTransferUtility;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BingoHallTests;

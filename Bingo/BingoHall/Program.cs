@@ -1,6 +1,4 @@
 using Accessories.BingoCardCreation;
-using Accessories.TombolaCreation;
-using BenchmarkDotNet.Toolchains.Results;
 using BingoHall;
 using BingoHall.Dapper;
 using BingoHall.Tombolas.Services;
@@ -11,14 +9,15 @@ using Microsoft.IdentityModel.Tokens;
 using PasswordsAndEncryption.Passwords;
 using System.Text;
 using BingoHall.Users.Services;
-using BingoHall.Authorization.JwtTokens;
-using BingoHall.Authorization.JwtTokens.Config;
+using DataTransferUtility.JwtTokens.Config;
+using DataTransferUtility.JwtTokens;
+using PasswordsAndEncryption.Encryption;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddSingleton<DapperContext>();
-builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -45,6 +44,8 @@ builder.Services.AddTransient<IUserDao, UserDao>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IJwtTokenGenerator, JwtTokenGenerator>();
 builder.Services.AddTransient<IJwtTokenGeneratorConfiguration, JwtTokenGeneratorConfigurationDI>();
+builder.Services.AddSingleton<IEncryptionServiceConfiguration, EncryptionServiceConfigurationDI>();
+builder.Services.AddTransient<IEncryptionService, EncryptionService>();
 
 var app = builder.Build();
 
@@ -58,8 +59,15 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
-app.UseAuthorization();
+app.UseRouting();
 
-app.MapControllers();
+app.UseAuthorization();
+//app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
 
 app.Run();
